@@ -1,10 +1,8 @@
 import json
 import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-from webdriver_manager.chrome import ChromeDriverManager
 
 class NVDACapture:
     def __init__(self):
@@ -23,8 +21,7 @@ class NVDACapture:
 
         driver = None
         try:
-            service = Service(ChromeDriverManager().install())
-            driver = webdriver.Chrome(service=service, options=options)
+            driver = webdriver.Chrome(options=options)
             driver.get(url)
             # Give the page a moment to fully render and idle (simulating networkidle)
             time.sleep(2)
